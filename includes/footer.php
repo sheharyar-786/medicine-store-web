@@ -21,6 +21,7 @@ if (!isset($base)) {
                 <li><a href="<?php echo pageUrl('shop.php'); ?>">Shop Medicines</a></li>
                 <li><a href="<?php echo pageUrl('checkout.php'); ?>">Upload Prescription</a></li>
                 <li><a href="<?php echo pageUrl('my-orders.php'); ?>">Track Orders</a></li>
+                <li><a href="<?php echo pageUrl('local-delivery.php'); ?>">Lahore Delivery Area</a></li>
             </ul>
         </div>
         <div class="footer-links">
