@@ -18,7 +18,28 @@ function restrictToLoggedIn() {
  */
 function restrictToAdmin() {
     if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-        header("Location: ../index.php?error=Unauthorized access");
+        header("Location: " . (function_exists('basePath') ? basePath() : '') . "/index.php?error=Unauthorized access");
+        exit();
+    }
+}
+
+function restrictToPharmacist() {
+    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pharmacist') {
+        header("Location: " . (function_exists('basePath') ? basePath() : '') . "/index.php?error=Unauthorized access");
+        exit();
+    }
+}
+
+function restrictToDriver() {
+    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'driver') {
+        header("Location: " . (function_exists('basePath') ? basePath() : '') . "/index.php?error=Unauthorized access");
+        exit();
+    }
+}
+
+function restrictToStaff() {
+    if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'pharmacist', 'driver'])) {
+        header("Location: " . (function_exists('basePath') ? basePath() : '') . "/index.php?error=Unauthorized access");
         exit();
     }
 }

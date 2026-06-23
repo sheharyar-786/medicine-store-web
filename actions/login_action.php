@@ -18,7 +18,16 @@ if (isset($_POST['login'])) {
             $_SESSION['user_name'] = $user['full_name'];
             $_SESSION['role'] = $user['role'];
 
-            header("Location: ../index.php");
+            if ($user['role'] === 'admin') {
+                header("Location: ../admin/index.php");
+            } elseif ($user['role'] === 'pharmacist') {
+                header("Location: ../pharmacist/dashboard.php");
+            } elseif ($user['role'] === 'driver') {
+                header("Location: ../driver/dashboard.php");
+            } else {
+                header("Location: ../index.php");
+            }
+            exit();
         } else {
             echo "Invalid password.";
         }
