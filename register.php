@@ -1,10 +1,12 @@
 <?php
 $pageTitle = 'Register';
+$pageStyles = ['auth'];
 include 'includes/header.php';
 ?>
 
 <main class="auth-page">
     <div class="auth-card reveal-init">
+        <div class="auth-icon"><i class="fas fa-user-plus"></i></div>
         <h2>Create Account</h2>
         <p class="auth-subtitle">Join HealthCare Store for fast medicine delivery</p>
 

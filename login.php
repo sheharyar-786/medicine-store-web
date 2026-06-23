@@ -1,10 +1,12 @@
 <?php
 $pageTitle = 'Login';
+$pageStyles = ['auth'];
 include 'includes/header.php';
 ?>
 
 <main class="auth-page">
     <div class="auth-card reveal-init">
+        <div class="auth-icon"><i class="fas fa-user-circle"></i></div>
         <h2>Welcome Back</h2>
         <p class="auth-subtitle">Sign in to your HealthCare Store account</p>
 
