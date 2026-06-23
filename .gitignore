@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Uploads (user-generated content)
+assets/uploads/products/*
+assets/uploads/prescriptions/*
+!assets/uploads/products/.gitkeep
+!assets/uploads/prescriptions/.gitkeep
+
+# Environment
+.env
