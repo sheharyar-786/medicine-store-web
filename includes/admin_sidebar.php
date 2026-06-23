@@ -1,9 +1,6 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/config.php';
 
-$base = '..';
 $currentPage = basename($_SERVER['PHP_SELF']);
 $pendingCount = 0;
 
@@ -16,7 +13,7 @@ if (isset($conn)) {
 ?>
 <aside class="admin-sidebar">
     <div class="sidebar-brand">
-        <a href="<?php echo $base; ?>/index.php" class="logo">
+        <a href="<?php echo pageUrl('index.php'); ?>" class="logo">
             <span class="logo-icon"><i class="fas fa-notes-medical"></i></span>
             Admin Panel
         </a>
@@ -47,10 +44,10 @@ if (isset($conn)) {
         </li>
         <li class="sidebar-divider"></li>
         <li>
-            <a href="<?php echo $base; ?>/index.php"><i class="fas fa-store"></i> View Store</a>
+            <a href="<?php echo pageUrl('index.php'); ?>"><i class="fas fa-store"></i> View Store</a>
         </li>
         <li>
-            <a href="<?php echo $base; ?>/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="<?php echo pageUrl('logout.php'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
     </ul>
 </aside>
