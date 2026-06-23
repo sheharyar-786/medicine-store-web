@@ -230,3 +230,15 @@ textarea.form-control { min-height: 120px; resize: vertical; }
     display: none;
     border: 2px solid var(--primary);
 }
+
+/* Rx vs OTC Tag Badges */
+.prescription-tag.tag-rx {
+    background: var(--danger) !important;
+    color: var(--white) !important;
+}
+
+.prescription-tag.tag-otc {
+    background: var(--accent-dark) !important;
+    color: var(--white) !important;
+}
+

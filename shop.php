@@ -6,6 +6,7 @@ include 'includes/header.php';
 
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 $category = isset($_GET['category']) ? mysqli_real_escape_string($conn, $_GET['category']) : '';
+$type = isset($_GET['type']) ? mysqli_real_escape_string($conn, $_GET['type']) : '';
 
 $sql = "SELECT * FROM products WHERE 1=1";
 if (!empty($search)) {
@@ -13,6 +14,11 @@ if (!empty($search)) {
 }
 if (!empty($category)) {
     $sql .= " AND category = '$category'";
+}
+if ($type === 'otc') {
+    $sql .= " AND requires_prescription = 0";
+} elseif ($type === 'rx') {
+    $sql .= " AND requires_prescription = 1";
 }
 $result = mysqli_query($conn, $sql);
 ?>
@@ -39,6 +45,11 @@ $result = mysqli_query($conn, $sql);
                 <option value="Immunity" <?php if($category == 'Immunity') echo 'selected'; ?>>Immunity</option>
                 <option value="Antibiotics" <?php if($category == 'Antibiotics') echo 'selected'; ?>>Antibiotics</option>
             </select>
+            <select name="type" class="filter-select" onchange="this.form.submit()">
+                <option value="">All Types (OTC & Rx)</option>
+                <option value="otc" <?php if($type == 'otc') echo 'selected'; ?>>OTC Only</option>
+                <option value="rx" <?php if($type == 'rx') echo 'selected'; ?>>Rx Required</option>
+            </select>
         </form>
     </div>
 
@@ -47,7 +58,9 @@ $result = mysqli_query($conn, $sql);
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
         <div class="product-card reveal-init">
             <?php if ($row['requires_prescription']): ?>
-            <span class="prescription-tag">Rx Required</span>
+            <span class="prescription-tag tag-rx">Rx Required</span>
+            <?php else: ?>
+            <span class="prescription-tag tag-otc">OTC</span>
             <?php endif; ?>
 
             <a href="product.php?id=<?php echo $row['id']; ?>">

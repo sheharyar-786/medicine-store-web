@@ -37,6 +37,11 @@ include 'includes/header.php';
             <h1><?php echo clean($product['name']); ?></h1>
             <p class="product-meta">Generic: <?php echo clean($product['generic_name']); ?></p>
             <span class="category-badge"><?php echo clean($product['category']); ?></span>
+            <?php if ($product['requires_prescription']): ?>
+            <span class="category-badge" style="background-color: var(--danger); color: var(--white); font-weight: 700;">Rx Required</span>
+            <?php else: ?>
+            <span class="category-badge" style="background-color: var(--accent-dark); color: var(--white); font-weight: 700;">OTC</span>
+            <?php endif; ?>
 
             <p class="product-price"><?php echo formatPrice($product['price']); ?></p>
 

@@ -71,7 +71,9 @@ include 'includes/header.php';
         ?>
         <div class="product-card reveal-init">
             <?php if ($product['requires_prescription']): ?>
-            <span class="prescription-tag">Rx</span>
+            <span class="prescription-tag tag-rx">Rx</span>
+            <?php else: ?>
+            <span class="prescription-tag tag-otc">OTC</span>
             <?php endif; ?>
 
             <a href="product.php?id=<?php echo $product['id']; ?>">
