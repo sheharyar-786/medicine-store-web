@@ -6,6 +6,9 @@ include 'includes/header.php';
 
 <main class="auth-page">
     <div class="auth-card reveal-init">
+        <div style="margin-bottom: 20px;">
+            <a href="index.php" style="color: var(--primary); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
         <div class="auth-icon"><i class="fas fa-user-plus"></i></div>
         <h2>Create Account</h2>
         <p class="auth-subtitle">Join HealthCare Store for fast medicine delivery</p>
@@ -30,6 +33,15 @@ include 'includes/header.php';
             <div class="form-group">
                 <label for="address">Delivery Address</label>
                 <textarea id="address" name="address" class="form-control" placeholder="Your default delivery address"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="role">Account Role</label>
+                <select id="role" name="role" class="form-control" style="width: 100%; padding: 10px; border-radius: var(--radius); border: 1px solid var(--border); font-size: 0.95rem; font-family: inherit;">
+                    <option value="customer">Customer</option>
+                    <option value="pharmacist">Store Pharmacist</option>
+                    <option value="driver">Delivery Driver</option>
+                    <option value="admin">Store Admin (Owner)</option>
+                </select>
             </div>
             <button type="submit" name="register" class="btn btn-block"><i class="fas fa-user-plus"></i> Register</button>
         </form>

@@ -6,6 +6,9 @@ include 'includes/header.php';
 
 <main class="auth-page">
     <div class="auth-card reveal-init">
+        <div style="margin-bottom: 20px;">
+            <a href="index.php" style="color: var(--primary); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
         <div class="auth-icon"><i class="fas fa-user-circle"></i></div>
         <h2>Welcome Back</h2>
         <p class="auth-subtitle">Sign in to your HealthCare Store account</p>

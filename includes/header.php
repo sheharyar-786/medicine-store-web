@@ -37,7 +37,10 @@ $pageStyles = $pageStyles ?? [];
 </head>
 <body class="<?php echo $isAdminPage ? 'admin-body' : 'store-body'; ?><?php echo !empty($pageStyles[0]) ? ' page-' . clean($pageStyles[0]) : ''; ?>">
 
-<?php if (!$isAdminPage): ?>
+<?php 
+$isAuthPage = in_array(basename($_SERVER['PHP_SELF']), ['login.php', 'register.php']);
+if (!$isAdminPage && !$isAuthPage): 
+?>
 <header class="site-header">
     <nav class="navbar" id="navbar">
         <a href="<?php echo pageUrl('index.php'); ?>" class="logo">

@@ -5,7 +5,10 @@ if (!isset($base)) {
 }
 ?>
 
-<?php if (strpos($_SERVER['PHP_SELF'], '/admin/') === false): ?>
+<?php 
+$isAuthPage = in_array(basename($_SERVER['PHP_SELF']), ['login.php', 'register.php']);
+if (strpos($_SERVER['PHP_SELF'], '/admin/') === false && !$isAuthPage): 
+?>
 <footer class="site-footer">
     <div class="footer-grid container">
         <div class="footer-brand">
