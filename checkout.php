@@ -12,8 +12,12 @@ $pageStyles = ['checkout'];
 include 'includes/header.php';
 
 $total = 0;
+$requiresPrescription = false;
 foreach ($_SESSION['cart'] as $item) {
     $total += $item['price'] * $item['quantity'];
+    if (!empty($item['requires_prescription'])) {
+        $requiresPrescription = true;
+    }
 }
 ?>
 
@@ -37,7 +41,21 @@ foreach ($_SESSION['cart'] as $item) {
         <div class="checkout-grid">
             <div>
                 <div class="checkout-card reveal-init">
-                    <h3><i class="fas fa-truck"></i> Delivery Details</h3>
+                    <h3><i class="fas fa-shipping-fast"></i> Fulfillment Method</h3>
+                    <div class="form-group" style="display: flex; gap: 24px; margin-top: 12px; margin-bottom: 12px;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer;">
+                            <input type="radio" name="delivery_method" value="delivery" checked onclick="toggleDeliveryMethod('delivery')">
+                            <span><i class="fas fa-truck"></i> Home Delivery</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer;">
+                            <input type="radio" name="delivery_method" value="pickup" onclick="toggleDeliveryMethod('pickup')">
+                            <span><i class="fas fa-store"></i> In-Store Pickup</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="checkout-card reveal-init" id="delivery-address-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Delivery Address</h3>
                     <div class="form-group">
                         <label for="shipping_address">Delivery Address</label>
                         <textarea id="shipping_address" name="shipping_address" class="form-control" placeholder="Enter your full delivery address" required></textarea>
@@ -46,13 +64,20 @@ foreach ($_SESSION['cart'] as $item) {
 
                 <div class="checkout-card reveal-init">
                     <h3><i class="fas fa-file-medical"></i> Prescription Upload</h3>
+                    <?php if ($requiresPrescription): ?>
+                    <div class="prescription-warning-banner" style="background: #fffbeb; border: 1px solid #fef3c7; color: #92400e; padding: 12px 16px; border-radius: var(--radius); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; line-height: 1.4;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 1.2rem; color: #d97706; flex-shrink: 0;"></i>
+                        <span><strong>Prescription Required:</strong> Your cart contains Rx-only medication. An upload of your prescription is <strong>mandatory</strong>.</span>
+                    </div>
+                    <?php else: ?>
                     <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 16px;">
                         If your order contains medicines requiring a prescription, please upload it below (JPG, PNG, or PDF).
                     </p>
+                    <?php endif; ?>
                     <div class="file-upload">
                         <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
                         <p>Drag & drop or click to upload</p>
-                        <input type="file" name="prescription" accept=".jpg,.jpeg,.png,.pdf">
+                        <input type="file" name="prescription" accept=".jpg,.jpeg,.png,.pdf" <?php echo $requiresPrescription ? 'required' : ''; ?>>
                     </div>
                 </div>
             </div>
@@ -77,5 +102,21 @@ foreach ($_SESSION['cart'] as $item) {
     </form>
     <?php endif; ?>
 </main>
+
+<script>
+function toggleDeliveryMethod(method) {
+    const addressCard = document.getElementById('delivery-address-card');
+    const addressInput = document.getElementById('shipping_address');
+    if (method === 'pickup') {
+        addressCard.style.display = 'none';
+        addressInput.value = 'In-Store Pickup';
+        addressInput.required = false;
+    } else {
+        addressCard.style.display = 'block';
+        addressInput.value = '';
+        addressInput.required = true;
+    }
+}
+</script>
 
 <?php include 'includes/footer.php'; ?>
