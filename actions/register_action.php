@@ -8,12 +8,13 @@ if (isset($_POST['register'])) {
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $address = mysqli_real_escape_string($conn, $_POST['address']);
     $role = mysqli_real_escape_string($conn, $_POST['role'] ?? 'customer');
+    $is_approved = ($role === 'customer') ? 1 : 0;
 
     // Secure the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (full_name, email, password, phone, address, role) 
-            VALUES ('$full_name', '$email', '$hashed_password', '$phone', '$address', '$role')";
+    $sql = "INSERT INTO users (full_name, email, password, phone, address, role, is_approved) 
+            VALUES ('$full_name', '$email', '$hashed_password', '$phone', '$address', '$role', $is_approved)";
 
     if (mysqli_query($conn, $sql)) {
         header("Location: ../login.php?msg=success");

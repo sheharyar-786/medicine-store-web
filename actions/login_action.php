@@ -14,6 +14,11 @@ if (isset($_POST['login'])) {
         
         // Verify the hashed password
         if (password_verify($password, $user['password'])) {
+            if (!$user['is_approved']) {
+                header("Location: ../login.php?error=Your staff account is pending admin approval.");
+                exit();
+            }
+
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['full_name'];
             $_SESSION['role'] = $user['role'];
