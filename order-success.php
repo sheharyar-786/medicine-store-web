@@ -1,5 +1,6 @@
 <?php
 $pageTitle = 'Order Confirmed';
+$pageStyles = ['success'];
 include 'includes/header.php';
 $orderId = isset($_GET['order_id']) ? htmlspecialchars($_GET['order_id']) : '';
 ?>

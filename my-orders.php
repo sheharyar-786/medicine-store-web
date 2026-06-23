@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $pageTitle = 'My Orders';
+$pageStyles = ['orders'];
 include 'includes/db_connect.php';
-include 'includes/functions.php';
 include 'includes/header.php';
 
 $user_id = $_SESSION['user_id'];

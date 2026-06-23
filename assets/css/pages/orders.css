@@ -1,0 +1,10 @@
+/* My orders page */
+.orders-page { padding: 32px 0 64px; }
+
+.cart-table-wrap {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
