@@ -30,7 +30,7 @@ include 'includes/header.php';
                 <label for="phone">Phone Number</label>
                 <input type="text" id="phone" name="phone" class="form-control" placeholder="+92 300 1234567">
             </div>
-            <div class="form-group">
+            <div class="form-group" id="address-group">
                 <label for="address">Delivery Address</label>
                 <textarea id="address" name="address" class="form-control" placeholder="Your default delivery address"></textarea>
             </div>
@@ -49,5 +49,27 @@ include 'includes/header.php';
         <p class="auth-footer">Already have an account? <a href="login.php">Login here</a></p>
     </div>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const roleSelect = document.getElementById('role');
+    const addressGroup = document.getElementById('address-group');
+    const addressInput = document.getElementById('address');
+
+    if (roleSelect && addressGroup) {
+        function toggleAddressField() {
+            if (roleSelect.value === 'customer') {
+                addressGroup.style.display = 'block';
+            } else {
+                addressGroup.style.display = 'none';
+                addressInput.value = ''; // clear address for staff/drivers
+            }
+        }
+
+        roleSelect.addEventListener('change', toggleAddressField);
+        toggleAddressField(); // trigger initial state
+    }
+});
+</script>
 
 <?php include 'includes/footer.php'; ?>
