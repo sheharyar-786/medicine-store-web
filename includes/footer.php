@@ -1,16 +1,15 @@
 <?php
 if (!isset($base)) {
-    $isAdminPage = strpos($_SERVER['PHP_SELF'], '/admin/') !== false;
-    $base = $isAdminPage ? '..' : '.';
+    require_once __DIR__ . '/config.php';
+    $base = basePath();
 }
-$isAdminPage = strpos($_SERVER['PHP_SELF'], '/admin/') !== false;
 ?>
 
-<?php if (!$isAdminPage): ?>
+<?php if (strpos($_SERVER['PHP_SELF'], '/admin/') === false): ?>
 <footer class="site-footer">
     <div class="footer-grid container">
         <div class="footer-brand">
-            <a href="<?php echo $base; ?>/index.php" class="logo">
+            <a href="<?php echo pageUrl('index.php'); ?>" class="logo">
                 <span class="logo-icon"><i class="fas fa-notes-medical"></i></span>
                 HealthCare <span>Store</span>
             </a>
@@ -19,17 +18,17 @@ $isAdminPage = strpos($_SERVER['PHP_SELF'], '/admin/') !== false;
         <div class="footer-links">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="<?php echo $base; ?>/shop.php">Shop Medicines</a></li>
-                <li><a href="<?php echo $base; ?>/checkout.php">Upload Prescription</a></li>
-                <li><a href="<?php echo $base; ?>/my-orders.php">Track Orders</a></li>
+                <li><a href="<?php echo pageUrl('shop.php'); ?>">Shop Medicines</a></li>
+                <li><a href="<?php echo pageUrl('checkout.php'); ?>">Upload Prescription</a></li>
+                <li><a href="<?php echo pageUrl('my-orders.php'); ?>">Track Orders</a></li>
             </ul>
         </div>
         <div class="footer-links">
             <h4>Categories</h4>
             <ul>
-                <li><a href="<?php echo $base; ?>/shop.php?category=Baby Care">Baby Care</a></li>
-                <li><a href="<?php echo $base; ?>/shop.php?category=Cardiac">Cardiac</a></li>
-                <li><a href="<?php echo $base; ?>/shop.php?category=Pain Relief">Pain Relief</a></li>
+                <li><a href="<?php echo pageUrl('shop.php?category=Baby Care'); ?>">Baby Care</a></li>
+                <li><a href="<?php echo pageUrl('shop.php?category=Cardiac'); ?>">Cardiac</a></li>
+                <li><a href="<?php echo pageUrl('shop.php?category=Pain Relief'); ?>">Pain Relief</a></li>
             </ul>
         </div>
         <div class="footer-contact">
@@ -49,6 +48,6 @@ $isAdminPage = strpos($_SERVER['PHP_SELF'], '/admin/') !== false;
 </footer>
 <?php endif; ?>
 
-<script src="<?php echo $base; ?>/assets/js/main.js"></script>
+<script src="<?php echo assetUrl('assets/js/main.js'); ?>"></script>
 </body>
 </html>
