@@ -73,7 +73,11 @@ if (!$isAdminPage && !$isAuthPage):
             </li>
             <?php if ($isLoggedIn): ?>
                 <?php if ($userRole === 'admin'): ?>
-                <li><a href="<?php echo pageUrl('admin/index.php'); ?>" class="nav-link"><i class="fas fa-user-shield"></i> Admin</a></li>
+                <li><a href="<?php echo pageUrl('admin/index.php'); ?>" class="nav-link"><i class="fas fa-user-shield"></i> Admin Panel</a></li>
+                <?php elseif ($userRole === 'pharmacist'): ?>
+                <li><a href="<?php echo pageUrl('pharmacist/dashboard.php'); ?>" class="nav-link"><i class="fas fa-prescription-bottle-alt"></i> Pharmacist Hub</a></li>
+                <?php elseif ($userRole === 'driver'): ?>
+                <li><a href="<?php echo pageUrl('driver/dashboard.php'); ?>" class="nav-link"><i class="fas fa-motorcycle"></i> Driver Portal</a></li>
                 <?php else: ?>
                 <li><a href="<?php echo pageUrl('my-orders.php'); ?>" class="nav-link">My Orders</a></li>
                 <?php endif; ?>
