@@ -10,7 +10,7 @@ function basePath() {
 
     $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
 
-    if (strpos($script, '/admin/') !== false) {
+    if (strpos($script, '/admin/') !== false || strpos($script, '/pharmacist/') !== false || strpos($script, '/driver/') !== false) {
         $path = rtrim(dirname(dirname($script)), '/');
     } else {
         $path = rtrim(dirname($script), '/');
