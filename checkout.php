@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $pageTitle = 'Checkout';
-include 'includes/functions.php';
+$pageStyles = ['checkout'];
 include 'includes/header.php';
 
 $total = 0;

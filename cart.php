@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Shopping Cart';
-include 'includes/functions.php';
+$pageStyles = ['cart'];
 include 'includes/header.php';
 ?>
 
