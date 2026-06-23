@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Home';
+$pageStyles = ['home'];
 include 'includes/db_connect.php';
-include 'includes/functions.php';
 include 'includes/header.php';
 ?>
 
