@@ -1,0 +1,84 @@
+/* Shop page */
+.shop-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.shop-toolbar h2 { font-size: 1.1rem; font-weight: 600; color: var(--dark); }
+
+.filter-select {
+    padding: 10px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: var(--white);
+    cursor: pointer;
+    outline: none;
+    min-width: 180px;
+}
+
+.filter-select:focus { border-color: var(--primary); }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    padding-bottom: 64px;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.product-card img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    margin: 0 auto 16px;
+}
+
+.product-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+.product-card h3 a { color: var(--dark); text-decoration: none; }
+.product-card h3 a:hover { color: var(--primary); }
+
+.generic-name { color: var(--muted); font-size: 0.8rem; margin-bottom: 10px; }
+.price-tag { font-size: 1.2rem; font-weight: 700; color: var(--accent-dark); margin-bottom: 16px; }
+
+.prescription-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--warning);
+    color: var(--white);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.product-card .btn { margin-top: auto; width: 100%; }

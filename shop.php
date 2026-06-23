@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Shop Medicines';
+$pageStyles = ['shop'];
 include 'includes/db_connect.php';
-include 'includes/functions.php';
 include 'includes/header.php';
 
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';

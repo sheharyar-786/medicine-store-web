@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Product Details';
+$pageStyles = ['product'];
 include 'includes/db_connect.php';
-include 'includes/functions.php';
 
 if (!isset($_GET['id'])) {
     header('Location: shop.php');
