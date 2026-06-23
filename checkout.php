@@ -27,6 +27,17 @@ foreach ($_SESSION['cart'] as $item) {
         <p>Confirm delivery details and upload prescription if needed</p>
     </div>
 
+    <?php if (isset($_GET['reorder']) && $_GET['reorder'] === 'success'): ?>
+    <div class="alert alert-success reveal-init" style="margin-bottom: 24px; display: flex;">
+        <i class="fas fa-check-circle"></i> Items from your previous order have been successfully loaded. Review details below to complete your refill!
+    </div>
+    <?php endif; ?>
+    <?php if (isset($_GET['error'])): ?>
+    <div class="alert alert-error reveal-init" style="margin-bottom: 24px; display: flex;">
+        <i class="fas fa-exclamation-circle"></i> <?php echo clean($_GET['error']); ?>
+    </div>
+    <?php endif; ?>
+
     <?php if (empty($_SESSION['cart'])): ?>
     <div class="empty-state">
         <i class="fas fa-shopping-cart"></i>

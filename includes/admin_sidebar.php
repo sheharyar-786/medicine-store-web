@@ -42,6 +42,26 @@ if (isset($conn)) {
                 <?php endif; ?>
             </a>
         </li>
+        <li>
+            <a href="sales-reports.php" class="<?php echo $currentPage === 'sales-reports.php' ? 'active' : ''; ?>">
+                <i class="fas fa-chart-line"></i> Sales Reports
+            </a>
+        </li>
+        <li>
+            <a href="expiry-stock.php" class="<?php echo $currentPage === 'expiry-stock.php' ? 'active' : ''; ?>">
+                <i class="fas fa-history"></i> Expiry & Stock
+            </a>
+        </li>
+        <li>
+            <a href="refill-reminders.php" class="<?php echo $currentPage === 'refill-reminders.php' ? 'active' : ''; ?>">
+                <i class="fas fa-bell"></i> Refill Reminders
+            </a>
+        </li>
+        <li>
+            <a href="manage-staff.php" class="<?php echo $currentPage === 'manage-staff.php' ? 'active' : ''; ?>">
+                <i class="fas fa-users-cog"></i> Manage Staff
+            </a>
+        </li>
         <li class="sidebar-divider"></li>
         <li>
             <a href="<?php echo pageUrl('index.php'); ?>"><i class="fas fa-store"></i> View Store</a>
