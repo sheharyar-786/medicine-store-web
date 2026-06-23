@@ -69,6 +69,17 @@ include 'includes/header.php';
                     <input type="number" name="quantity" value="1" min="1" max="<?php echo $product['stock_quantity']; ?>" class="qty-input">
                     <button type="submit" class="btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
+                
+                <?php
+                $waMessage = "Hello, I want to order: " . $product['name'] . " (" . $product['generic_name'] . "). Price: " . formatPrice($product['price']);
+                if ($product['requires_prescription']) {
+                    $waMessage .= " (Rx medicine, I will share prescription picture)";
+                }
+                $waUrl = getWhatsAppLink($waMessage);
+                ?>
+                <a href="<?php echo $waUrl; ?>" target="_blank" class="btn btn-block" style="margin-top: 12px; background-color: #25D366; border-color: #25D366; color: white; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Order via WhatsApp
+                </a>
                 <p class="stock-info"><i class="fas fa-box"></i> In stock: <?php echo $product['stock_quantity']; ?> units</p>
             </form>
         </div>

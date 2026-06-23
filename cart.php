@@ -113,9 +113,29 @@ if (!empty($_SESSION['cart']) && count($_SESSION['cart']) > 1) {
         </table>
     </div>
 
-    <div class="cart-summary reveal-init">
+    <div class="cart-summary reveal-init" style="display: flex; flex-direction: column; align-items: flex-end; gap: 16px;">
         <div class="cart-total">Total: <span><?php echo formatPrice($total); ?></span></div>
-        <a href="checkout.php" class="btn"><i class="fas fa-lock"></i> Proceed to Checkout</a>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <?php
+            $waItems = [];
+            $hasRx = false;
+            foreach ($_SESSION['cart'] as $item) {
+                $waItems[] = $item['quantity'] . "x " . $item['name'] . " (" . formatPrice($item['price'] * $item['quantity']) . ")";
+                if (!empty($item['requires_prescription'])) {
+                    $hasRx = true;
+                }
+            }
+            $waText = "Hello HealthCare Store! I want to order the following medicines:\n\n" . implode("\n", $waItems) . "\n\nTotal: " . formatPrice($total);
+            if ($hasRx) {
+                $waText .= "\n\n(Includes Rx medicines. I have my prescription ready to send)";
+            }
+            $waUrl = getWhatsAppLink($waText);
+            ?>
+            <a href="<?php echo $waUrl; ?>" target="_blank" class="btn" style="background-color: #25D366; border-color: #25D366; color: white; display: flex; align-items: center; gap: 8px;">
+                <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Order via WhatsApp
+            </a>
+            <a href="checkout.php" class="btn"><i class="fas fa-lock"></i> Proceed to Checkout</a>
+        </div>
     </div>
     <?php endif; ?>
 </main>

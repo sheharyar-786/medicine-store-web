@@ -19,3 +19,9 @@ function getCartCount() {
     }
     return 0;
 }
+
+function getWhatsAppLink($text) {
+    $phone = "923001234567"; // Standard Pakistani format for WhatsApp Business
+    return "https://api.whatsapp.com/send?phone=" . $phone . "&text=" . urlencode($text);
+}
+?>
