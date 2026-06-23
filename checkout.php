@@ -13,10 +13,12 @@ include 'includes/header.php';
 
 $total = 0;
 $requiresPrescription = false;
-foreach ($_SESSION['cart'] as $item) {
-    $total += $item['price'] * $item['quantity'];
-    if (!empty($item['requires_prescription'])) {
-        $requiresPrescription = true;
+if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        $total += $item['price'] * $item['quantity'];
+        if (!empty($item['requires_prescription'])) {
+            $requiresPrescription = true;
+        }
     }
 }
 ?>
